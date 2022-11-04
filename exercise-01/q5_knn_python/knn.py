@@ -12,13 +12,10 @@ def knn(samples, k):
     #####Insert your code here for subtask 5b#####
     # Compute the number of the samples created
     N = samples.shape[0]
-    eps = 10e-5
     estDensity = np.ndarray([N, 2])
     for index, x in np.ndenumerate(samples):
-        v = 0
-        distances = np.abs(samples - x)
-        while np.sum(distances < v) < k:
-            v += eps
-        p = k / (N * 2 * v) # v is the radius
-        estDensity[index] = [x, p]
+        distances = np.sort(np.abs(samples - x))
+        v = 2 * np.max(distances[:k])
+        estDensity[index] = [samples[index], k / (N * v)]
+
     return estDensity
