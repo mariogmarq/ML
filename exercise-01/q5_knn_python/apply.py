@@ -11,6 +11,7 @@ print('Question: Kernel/K-Nearest Neighborhood Density Estimators')
 
 # Produce the random samples
 samples = np.random.normal(0, 1, 100)
+samples = np.sort(samples) # for pretty drawing
 
 # Compute the original normal distribution
 realDensity = gauss1D(0, 1, 100, 5)
