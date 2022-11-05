@@ -22,7 +22,17 @@ def skinDetection(ndata, sdata, K, n_iter, epsilon, theta, img):
     nweights, nmeans, ncov = estGaussMixEM(ndata, K, n_iter, epsilon)
     sweights, smeans, scov = estGaussMixEM(sdata, K, n_iter, epsilon)
     print(img.shape)
+
+    N = img.shape[0]
+    M = img.shape[1]
     
+    result = np.ndarray([N, M])
+    for i in range(N):
+        for j in range(M):
+            point = img[i, j, :].reshape(1, img.shape[2])
+            sprob = getLogLikelihood(smeans, sweights, scov, point)
+            nprob = getLogLikelihood(nmeans, nweights, ncov, point)
+            result[i, j] = (sprob/nprob) > theta
     
 
     return result
