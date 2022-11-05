@@ -15,7 +15,7 @@ def knn(samples, k):
     estDensity = np.ndarray([N, 2])
     for index, x in np.ndenumerate(samples):
         distances = np.sort(np.abs(samples - x))
-        v = 2 * np.max(distances[:k])
+        v = 2 * np.max(distances[:k+1])
         estDensity[index] = [samples[index], k / (N * v)]
 
     return estDensity

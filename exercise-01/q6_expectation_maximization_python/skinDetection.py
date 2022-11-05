@@ -19,4 +19,10 @@ def skinDetection(ndata, sdata, K, n_iter, epsilon, theta, img):
     # result        : Result of the detector for every image pixel
 
     #####Insert your code here for subtask 1g#####
+    nweights, nmeans, ncov = estGaussMixEM(ndata, K, n_iter, epsilon)
+    sweights, smeans, scov = estGaussMixEM(sdata, K, n_iter, epsilon)
+    print(img.shape)
+    
+    
+
     return result
