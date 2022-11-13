@@ -27,9 +27,7 @@ def leastSquares(data, label):
     #W = np.linalg.inv(X.T @ X) @ X.T @ label
     W = label.T @ (np.linalg.pinv(X_ext)).T
 
-    print(W)
-
     weight = W[1:]
-    bias = W[0];
+    bias = W[0]
     
     return weight, bias

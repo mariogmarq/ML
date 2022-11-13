@@ -1,3 +1,5 @@
+import numpy as np
+
 def linclass(weight, bias, data):
     # Linear Classifier
     #
@@ -11,6 +13,9 @@ def linclass(weight, bias, data):
 
     #####Insert your code here for subtask 1b#####
     # Perform linear classification i.e. class prediction
+    N = data.shape[0]
+    class_pred = np.array([weight @ data[i, :] + bias for i in range(N)])
+    class_pred = np.array([1 if x > 0 else -1 for x in class_pred]) # Put between +-1
 
     return class_pred
 
